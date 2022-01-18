@@ -1,0 +1,32 @@
+{% extends 'App/padre.html' %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+    
+   <h1>Cargue un propietario</h1>
+
+   {% if form.errors  %}
+        <p style="color:red;"> Los datos son incorrectos, intente de vuelta
+    {% endif %}
+
+
+   <form action="/App/formulario_propietario/" method="POST"> {% csrf_token %}
+
+       <table>
+           
+           {{form.as_table}}
+
+       </table>
+    
+      
+        
+        <input type="submit"  value="Cargar">
+
+   </form>
+
+
+
+ 
+
+{% endblock contenidoQueCambia %}

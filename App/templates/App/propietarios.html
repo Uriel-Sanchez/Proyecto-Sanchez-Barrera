@@ -1,0 +1,18 @@
+{% extends 'App/padre.html' %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+    
+   <h1>Propietarios Registrados</h1>
+
+
+   <ul>
+      {% for propietario in lista %}
+         <li> {{propietario.nombre}} {{propietario.apellido}} </li>
+      {% endfor %}
+  </ul>
+
+
+
+{% endblock contenidoQueCambia %}

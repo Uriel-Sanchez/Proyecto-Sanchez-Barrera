@@ -1,0 +1,28 @@
+{% extends 'App/padre.html' %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+    
+   <h1>Resultados de autos {{marca}}</h1>
+
+   
+   {% if autos %}
+
+   <ul>
+       
+       {% for auto in autos %}
+           <li>
+               {{auto}}
+
+           </li>
+       {% endfor %}
+
+   </ul>
+       
+   {% endif %}
+       
+
+
+
+{% endblock contenidoQueCambia %}

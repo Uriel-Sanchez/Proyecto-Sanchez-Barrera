@@ -1,0 +1,18 @@
+{% extends 'App/padre.html' %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+    
+   <h1>Lista de Autos Registrados</h1>
+
+
+   <ul>
+       {% for auto in lista %}
+         <li> {{auto.marca}} {{auto.modelo}} </li>
+       {% endfor %}
+   </ul>
+
+    
+
+{% endblock contenidoQueCambia %}
