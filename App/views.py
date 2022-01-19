@@ -5,7 +5,7 @@ from App.models import Autos, Motos, Propietario
 from App.forms import Formulario_auto, Formulario_moto,Formulario_propietario
 
 
-# Create your views here.
+# Create you
 
 def inicio(request):
 
@@ -83,10 +83,10 @@ def buscar_auto(request):
     if(request.method == 'GET'):
 
         marca= request.GET["marca"]
-        
+       
         autos=Autos.objects.filter(marca=marca)
-        
-        return render(request, "App/resultado_busqueda_auto.html", {"autos": autos, "marca": marca})
+    
+        return render(request, "App/resultado_busqueda_auto.html", {"autos": autos, "marca": marca,})
 
     else:
         HttpResponse(f'No enviaste los datos')
@@ -127,7 +127,7 @@ def formulario_propietario(request):
 
             informacion= formulario_propietario1.cleaned_data
 
-            propietario = Propietario(nombre=informacion["nombre"], apellido=informacion["apellido"], email=informacion["email"], fechaDeAdquisicion=informacion["fechaDeAdquisicion"])
+            propietario = Propietario(nombre=informacion["nombre"], apellido=informacion["apellido"], dni=informacion["dni"], email=informacion["email"], fechaDeAdquisicion=informacion["fechaDeAdquisicion"])
 
             propietario.save()
 
