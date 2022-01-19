@@ -24,7 +24,9 @@ Y para cargar su moto lo puede hacer [aqui][formM]
 
 #### Propietarios
 
-Para conocer a los distintos propietarios que hay, se los puede ver en el siguiente listado de [propietarios][formP]
+Para conocer a los distintos propietarios que hay, se los puede ver en el siguiente listado de [propietarios][prop]
+
+Y para registrarte como nuevo propietario lo puede realizar haciendo [click][formP]
 
 
 
@@ -36,3 +38,4 @@ Para conocer a los distintos propietarios que hay, se los puede ver en el siguie
 [formA]: http://127.0.0.1:8000/App/formulario_auto/
 [formM]: http://127.0.0.1:8000/App/formulario_moto/
 [formP]: http://127.0.0.1:8000/App/formulario_propietario/
+[prop]: http://127.0.0.1:8000/App/propietarios/
