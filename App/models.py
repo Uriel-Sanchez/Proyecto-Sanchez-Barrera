@@ -10,7 +10,7 @@ class Autos(models.Model):
     km=models.IntegerField()
 
     def __str__(self):
-        return f'{self.marca}-{self.modelo}'
+        return f'{self.marca}  , {self.modelo}'
 
 class Motos(models.Model):
 
@@ -18,10 +18,17 @@ class Motos(models.Model):
     modelo=models.CharField(max_length=50)
     color=models.CharField(max_length=50)
     km=models.IntegerField()
+    
+    def __str__(self):
+        return f'{self.marca}  ,  {self.modelo}'
 
 class Propietario(models.Model):
 
     nombre=models.CharField(max_length=50)
     apellido=models.CharField(max_length=50)
+    dni= models.IntegerField()
     email=models.EmailField()
     fechaDeAdquisicion=models.DateField()
+    
+    def __str__(self):
+        return f'{self.nombre}  ,  {self.apellido}'
