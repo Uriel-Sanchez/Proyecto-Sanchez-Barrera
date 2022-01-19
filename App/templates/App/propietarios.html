@@ -9,7 +9,8 @@
 
    <ul>
       {% for propietario in lista %}
-         <li> {{propietario.nombre}} {{propietario.apellido}} </li>
+      <div class="container col-12 mb-3"></div>
+         <li> NOMBRE: {{propietario.nombre}}  APELLIDO: {{propietario.apellido}}  DNI:{{propietario.dni}}</li>
       {% endfor %}
   </ul>
 

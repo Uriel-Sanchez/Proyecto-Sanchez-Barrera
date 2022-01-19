@@ -4,15 +4,26 @@
 
 {% block contenidoQueCambia %}
     
-   <h1>Lista de Autos Registrados</h1>
+    <h1>Lista de Autos Registrados</h1>
 
 
-   <ul>
-       {% for auto in lista %}
-         <li> {{auto.marca}} {{auto.modelo}} </li>
-       {% endfor %}
-   </ul>
+    <ul>
+        {% for auto in lista %}
+        <div class="container col-12 mb-3"></div>  
+        <li> MARCA: {{auto.marca}}  MODELO: {{auto.modelo}}   COLOR: {{auto.color}}  KM: {{auto.km}} </li>
+        {% endfor %}
+    </ul>
 
-    
+    <h3>Que marca de auto estas buscando?</h3>
+
+    <form action="/App/buscar_auto/" method="GET"> 
+
+
+    <p> Marca:<input type="text" name="marca" id="marca"></p>
+
+
+    <input type="submit"  value="Buscar">
+
+{% endblock contenidoQueCambia %}
 
 {% endblock contenidoQueCambia %}
