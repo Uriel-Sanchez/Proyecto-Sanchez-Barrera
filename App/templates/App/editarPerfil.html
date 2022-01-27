@@ -4,26 +4,23 @@
 
 {% block contenidoQueCambia %}
     
-   <h1>Cargue su Auto</h1>
+   <h1>Editar Perfil</h1>
 
-   {% if form.errors  %}
-        <p style="color:red;"> Los datos son incorrectos, intente de vuelta
-    {% endif %}
-
-
-   <form action="/App/formulario_auto/" method="POST"> {% csrf_token %}
+   
+   <form action="" method="POST"> {% csrf_token %}
 
        <table>
            
-           {{form.as_table}}
+           {{miFormulario.as_table}}
 
        </table>
     
       
         
-        <input type="submit"  value="Cargar">
+        <input type="submit"  value="Confirmar">
 
    </form>
+
 <div align = "right">
     
     <a href="{% url 'perfil' %}">
@@ -31,7 +28,8 @@
     </a>
 
 </div>
-   
+
+
  
 
 {% endblock contenidoQueCambia %}

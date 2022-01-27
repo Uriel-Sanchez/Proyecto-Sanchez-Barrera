@@ -1,0 +1,22 @@
+{% extends 'App/padre.html' %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+    
+    {{mensaje}}
+
+   <h1>Resgistrate</h1>
+
+   <form action="" method="POST">
+        {% csrf_token %}
+        
+        {{form.as_p}}
+
+        <button type="submit"> Registrarse</button>
+
+
+   </form>
+
+
+{% endblock contenidoQueCambia %}

@@ -24,7 +24,18 @@
                         <li class="nav-item"><a class="nav-link" href="{% url 'autos' %}">Autos</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'motos' %}">Motos</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'propietarios' %}">Propietarios</a></li>
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Blog</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'registrar' %}">Registrarse</a></li>
+                        {% if not request.user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'login' %}">Iniciar Sesion</a></li>
+                        {% endif %}
+                        
+                        {% if request.user.is_authenticated  %}
+
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'logout' %}">Cerrar Sesion</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'perfil' %}">Hola, {{user.username}} !!!</a></li>
+                        {% endif %}
+                            
+
                     </ul>
                 </div>
             </div>

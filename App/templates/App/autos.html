@@ -6,14 +6,6 @@
     
     <h1>Lista de Autos Registrados</h1>
 
-
-    <ul>
-        {% for auto in lista %}
-        <div class="container col-12 mb-3"></div>  
-        <li> MARCA: {{auto.marca}}  MODELO: {{auto.modelo}}   COLOR: {{auto.color}}  KM: {{auto.km}} </li>
-        {% endfor %}
-    </ul>
-
     <h3>Que marca de auto estas buscando?</h3>
 
     <form action="/App/buscar_auto/" method="GET"> 
@@ -23,6 +15,14 @@
 
 
     <input type="submit"  value="Buscar">
+
+    <ul>
+        {% for auto in lista %}
+        <div class="container col-12 mb-3"></div>  
+        <li> MARCA: {{auto.marca}}  MODELO: {{auto.modelo}}   COLOR: {{auto.color}}  KM: {{auto.km}} </li>
+        {% endfor %}
+    </ul>
+
 
 {% endblock contenidoQueCambia %}
 
