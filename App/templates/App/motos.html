@@ -8,18 +8,34 @@
 
    <h3>Que marca de moto estas buscando?</h3>
 
-    <form action="/App/buscar_moto/" method="GET"> 
+   <form action="/App/buscar_moto/" method="GET"> 
 
 
-    <p> Marca:<input type="text" name="marca" id="marca"></p>
+   <p> Ingrese la marca en mayusculas:  <input type="text" name="marca" id="marca"></p>
 
 
-    <input type="submit"  value="Buscar">
-
+   <input type="submit"  value="Buscar">
 
    <ul>
       {% for moto in lista %}
-        <li> MARCA: {{moto.marca}}  MODELO: {{moto.modelo}} COLOR: {{moto.color}}  KM: {{moto.km}} </li>
+      <table>
+      <tbody>
+      <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      </tr>
+      <tr>
+      <td><img src="{{moto.imagen.url}}"  width="250 px" height="200 px"></td>
+      <td>
+      MARCA: {{moto.marca}}<br>
+      MODELO: {{moto.modelo}}<br>
+      COLOR: {{moto.color}}<br>
+      KM: {{moto.km}}<br>
+      </td>
+      </tr>
+      </tbody>
+      </table>
       {% endfor %}
   </ul>
 

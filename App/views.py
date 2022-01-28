@@ -2,7 +2,7 @@ from http.client import HTTPResponse
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from App.models import Autos, Motos, Propietario
-from App.forms import Formulario_auto, Formulario_moto,Formulario_propietario,UserEditForm
+from App.forms import Formulario_auto, Formulario_moto,Formulario_propietario, UserEditForm
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
@@ -25,7 +25,7 @@ def autos(request):
     return render(request, "App/autos.html", {"lista": lista})
 @login_required
 def motos(request):
-
+    
     lista=Motos.objects.all()
 
     return render(request, "App/motos.html", {"lista": lista})

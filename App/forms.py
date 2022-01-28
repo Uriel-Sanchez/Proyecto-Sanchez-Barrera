@@ -5,6 +5,7 @@ from tkinter.tix import Form
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django import template
 
 class Formulario_auto(forms.Form):
 
@@ -12,6 +13,7 @@ class Formulario_auto(forms.Form):
     modelo=forms.CharField()
     color=forms.CharField()
     km=forms.IntegerField()
+    imagen=forms.ImageField()
 
 
 class Formulario_moto(forms.Form):
@@ -19,6 +21,7 @@ class Formulario_moto(forms.Form):
     modelo=forms.CharField()
     color=forms.CharField()
     km=forms.IntegerField()
+    imagen=forms.ImageField()
 
 
 class Formulario_propietario(forms.Form):

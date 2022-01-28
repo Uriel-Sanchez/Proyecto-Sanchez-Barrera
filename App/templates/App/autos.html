@@ -11,15 +11,31 @@
     <form action="/App/buscar_auto/" method="GET"> 
 
 
-    <p> Marca:<input type="text" name="marca" id="marca"></p>
+    <p> Ingrese la marca en mayusculas:  <input type="text" name="marca" id="marca"></p>
 
 
     <input type="submit"  value="Buscar">
 
     <ul>
         {% for auto in lista %}
-        <div class="container col-12 mb-3"></div>  
-        <li> MARCA: {{auto.marca}}  MODELO: {{auto.modelo}}   COLOR: {{auto.color}}  KM: {{auto.km}} </li>
+        <table>
+            <tbody>
+            <tr>
+            <td></td>
+            <td>               </td>
+            <td></td>
+            </tr>
+            <tr>
+            <td><img src="{{auto.imagen.url}}"  width="250 px" height="200 px"></td>
+            <td>
+            MARCA: {{auto.marca}}<br>
+            MODELO: {{auto.modelo}}<br>
+            COLOR: {{auto.color}}<br>
+            KM: {{auto.km}}<br>
+            </td>
+            </tr>
+            </tbody>
+            </table>
         {% endfor %}
     </ul>
 

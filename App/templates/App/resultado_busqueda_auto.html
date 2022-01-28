@@ -12,10 +12,24 @@
    <ul>
        
        {% for auto in autos %}
-           <li>
-               {{auto}}
-
-           </li>
+       <table>
+        <tbody>
+        <tr>
+        <td></td>
+        <td>               </td>
+        <td></td>
+        </tr>
+        <tr>
+        <td><img src="{{auto.imagen.url}}"  width="250 px" height="200 px"></td>
+        <td>
+        MARCA: {{auto.marca}}<br>
+        MODELO: {{auto.modelo}}<br>
+        COLOR: {{auto.color}}<br>
+        KM: {{auto.km}}<br>
+        </td>
+        </tr>
+        </tbody>
+        </table>
        {% endfor %}
 
    </ul>
