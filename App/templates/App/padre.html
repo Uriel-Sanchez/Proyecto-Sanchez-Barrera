@@ -24,8 +24,8 @@
                         <li class="nav-item"><a class="nav-link" href="{% url 'autos' %}">Autos</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'motos' %}">Motos</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'propietarios' %}">Propietarios</a></li>
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'registrar' %}">Registrarse</a></li>
                         {% if not request.user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'registrar' %}">Registrarse</a></li>
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'login' %}">Iniciar Sesion</a></li>
                         {% endif %}
                         
@@ -41,17 +41,22 @@
             </div>
         </nav>
         <!-- Page content-->
-        <div class="container mt-5">
+             <style type="text/css">
+            #element5 {overflow:hidden;}
+              </style>
+        
+             <div class="container mt-5" id="element5"> 
+                {% block contenidoQueCambia %}
+            
+
+                {% endblock contenidoQueCambia %}
+
+
+
+
+             </div>
             
         
-        {% block contenidoQueCambia %}
-            
-
-        {% endblock contenidoQueCambia %}
-            
-
-
-
 
 
         <!-- Footer-->

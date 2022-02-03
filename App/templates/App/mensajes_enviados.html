@@ -1,0 +1,47 @@
+{% extends 'App/padre.html' %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+
+   <h1>Mensajes Enviados</h1>
+
+      <div class="b-example-divider"></div>
+    
+       <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 380px;" float= left>
+        <a href="#" class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
+          <svg class="bi me-2" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
+          <span class="fs-5 fw-semibold">Mensajes Enviados</span>
+        </a>
+        
+        {% for mensaje in mensajes %}
+    
+        <div class="list-group list-group-flush border-bottom scrollarea">
+            <a href="{% url 'formulario_mensaje' %}" class="list-group-item list-group-item-action active py-3 lh-tight" aria-current="true">
+              <div class="d-flex w-100 align-items-center justify-content-between">
+                <strong class="mb-1">Enviado a {{mensaje.destinatario}}</strong>
+                <small>Enviar otro mensaje</small>
+              </div>
+              <div class="col-10 mb-1 small">{{mensaje.mensaje}}</div>
+    
+        {% endfor %}
+    
+    
+        
+          
+      <div class="b-example-divider"></div>
+    
+      <div align = "right">
+        
+        <a href="{% url 'perfil' %}">
+            <button>Volver</button>
+        </a>
+  
+
+      </div>
+       
+    
+
+
+{% endblock contenidoQueCambia %}

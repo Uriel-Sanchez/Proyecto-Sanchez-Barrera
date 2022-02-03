@@ -1,6 +1,9 @@
+from xml.dom.minidom import Document
+from django.conf import settings
 from django.urls import path
 from App import views
 from django.contrib.auth.views import LogoutView
+from django.conf.urls.static import static
 
 
 urlpatterns = [
@@ -24,6 +27,18 @@ urlpatterns = [
 
     path('editarPerfil/',views.editarPerfil,name="editarPerfil"),
     path('perfil/',views.perfil,name="perfil"),
+
+    path('formulario_mensaje/',views.formulario_mensaje,name="formulario_mensaje"),
+    path('buzon_de_entrada/',views.buzon_de_entrada,name="buzon_de_entrada"),
+    path('mensajes_enviados/',views.mensajes_enviados,name="mensajes_enviados"),
+
+    #path('respuesta/',views.respuesta,name="respuesta"),
+
+
+    
     
 
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    

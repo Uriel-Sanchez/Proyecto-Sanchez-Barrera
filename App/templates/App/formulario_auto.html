@@ -3,35 +3,40 @@
 {% load static %}
 
 {% block contenidoQueCambia %}
-    
-   <h1>Cargue su Auto</h1>
-
-   {% if form.errors  %}
-        <p style="color:red;"> Los datos son incorrectos, intente de vuelta
-    {% endif %}
-
-
-   <form action="/App/formulario_auto/" method="POST"> {% csrf_token %}
-
-       <table>
-           
-           {{form.as_table}}
-
-       </table>
-    
-      
-        
-        <input type="submit"  value="Cargar">
-
-   </form>
-<div align = "right">
-    
-    <a href="{% url 'perfil' %}">
-        <button>Volver</button>
-    </a>
-
-</div>
-   
+<h1> Cargue un Auto</h1>
  
+      
+        {% if form.errors  %}
+        <p style="color:red;"> Los datos son incorrectos, intente de vuelta
+        {% endif %}
+   
+   
+         <form action="/App/formulario_auto/" method="POST"> {% csrf_token %}
+   
+         <table>
+          
+          {{form.as_table}}
+   
+         </table>
+   
+     
+       
+          <input type="submit"  value="Cargar">
+   
+         </form>
+       
+         <div align = "right">
+   
+            <a href="{% url 'perfil' %}">
+            <button>Volver</button>
+             </a>
+   
+           </div>
+   
+
+
+
+
 
 {% endblock contenidoQueCambia %}
+

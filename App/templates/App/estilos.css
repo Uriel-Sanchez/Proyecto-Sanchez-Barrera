@@ -1,0 +1,19 @@
+html, body{
+    padding: 0;
+
+}
+
+.container{
+    padding: 1em;
+    overflow: hidden;
+}
+
+.item{
+    margin: 1em;
+    padding: 1em;
+    float: left;
+}
+
+#contenido{
+    background-color: blueviolet;
+}

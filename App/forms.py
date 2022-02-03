@@ -44,4 +44,10 @@ class Meta:
     model = User
     fields = ['email', 'password1', 'password1','first_name','last_name']
 
+
+class Formulario_mensaje(forms.Form):
+
+    destinatario = forms.CharField(label= 'Username')
+    mensaje=forms.CharField(max_length=1000, label='Mensaje')
+    
     

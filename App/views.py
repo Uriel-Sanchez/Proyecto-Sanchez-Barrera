@@ -1,8 +1,8 @@
 from http.client import HTTPResponse
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
-from App.models import Autos, Motos, Propietario
-from App.forms import Formulario_auto, Formulario_moto,Formulario_propietario, UserEditForm
+from App.models import Autos, Motos, Propietario, Mensajeria
+from App.forms import Formulario_auto, Formulario_moto,Formulario_propietario, UserEditForm, Formulario_mensaje
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
@@ -66,7 +66,7 @@ def formulario_auto(request):
 
             informacion= formulario_auto1.cleaned_data
 
-            auto = Autos(marca=informacion["marca"], modelo=informacion["modelo"], color=informacion["color"], km=informacion["km"])
+            auto = Autos(user=request.user, marca=informacion["marca"], modelo=informacion["modelo"], color=informacion["color"], km=informacion["km"], imagen= informacion["autos"])
 
             auto.save()
 
@@ -111,7 +111,7 @@ def formulario_moto(request):
 
             informacion= formulario_moto1.cleaned_data
 
-            moto = Motos(marca=informacion["marca"], modelo=informacion["modelo"], color=informacion["color"], km=informacion["km"])
+            moto = Motos(marca=informacion["marca"], modelo=informacion["modelo"], color=informacion["color"], km=informacion["km"], imagen= informacion["motos"])
 
             moto.save()
 
@@ -258,3 +258,69 @@ def perfil(request):
     return render(request, "App/perfil.html", {"usuario": usuario, "nombre": usuario.first_name, "apellido": usuario.last_name})
 
 
+@login_required
+def formulario_mensaje(request):
+
+    if(request.method == 'POST'):
+
+        formulario_mensaje1 = Formulario_mensaje(request.POST)
+
+        if(formulario_mensaje1.is_valid()):
+
+            informacion= formulario_mensaje1.cleaned_data
+
+            mensaje = Mensajeria(user=request.user, destinatario=informacion["destinatario"], mensaje=informacion["mensaje"])
+
+            mensaje.save()
+
+            return render(request, "App/inicio.html", {'mensaje': f'Mensaje enviado a {mensaje.destinatario} correctamente'})
+
+    else:
+
+        formulario_mensaje1= Formulario_mensaje()
+
+    return render(request, "App/formulario_mensaje.html", {'form': formulario_mensaje1})
+    
+
+@login_required
+def buzon_de_entrada(request):
+
+    mensajes = Mensajeria.objects.filter(destinatario= request.user) 
+
+    return render(request, "App/buzon_de_entrada.html", {'mensajes': mensajes})
+
+
+@login_required
+def mensajes_enviados(request):
+
+    mensajes = Mensajeria.objects.filter(user= request.user.id) 
+
+    return render(request, "App/mensajes_enviados.html", {'mensajes': mensajes})
+
+
+
+#@login_required
+#def respuesta(request): ## ver como hacer para q el nombre salga directamente en la respuesta
+
+    usuario = request.user
+
+    if(request.method == 'POST'):
+
+        formulario_mensaje1 = Formulario_mensaje(request.POST)
+
+        if(formulario_mensaje1.is_valid()):
+
+            informacion= formulario_mensaje1.cleaned_data
+
+            mensaje = Mensajeria(user=request.user, destinatario=informacion["destinatario"], mensaje=informacion["mensaje"])
+
+            mensaje.save()
+
+            return render(request, "App/inicio.html", {'mensaje': f'Mensaje enviado a {mensaje.destinatario} correctamente'})
+
+    else:
+
+        formulario_mensaje1= Formulario_mensaje(initial={'user': mensaje.destinatario})
+
+    return render(request, "App/respuesta.html", {'form': formulario_mensaje1})
+    

@@ -1,0 +1,48 @@
+{% extends 'App/padre.html' %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+    
+   <h1>Envie su Mensaje</h1>
+   <h6>Escriba el username de la persona a la que le quieras envier el mensaje !</h6>
+
+   {% if form.errors  %}
+        <p style="color:red;"> Los datos son incorrectos, intente de vuelta
+    {% endif %}
+
+
+   <form action="/App/formulario_mensaje/" method="POST"> {% csrf_token %}
+
+
+       <table>
+
+        <div class="form-control">{{form.destinatario}}</div>
+
+       </table>
+
+       <div class="form-group">
+        <label for="exampleFormControlTextarea1">Escriba su mensaje</label>
+        <textarea class="form-control"  rows="3" value= {{form.mensaje}}> </textarea>
+      </div>
+    
+    
+  
+           
+        <input type="submit"  value="Enviar">
+
+   </form>
+
+
+<div align = "right">
+    
+    <a href="{% url 'perfil' %}">
+        <button>Volver</button>
+    </a>
+
+</div>
+
+
+ 
+
+{% endblock contenidoQueCambia %}
