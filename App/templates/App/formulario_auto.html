@@ -10,28 +10,28 @@
         <p style="color:red;"> Los datos son incorrectos, intente de vuelta
         {% endif %}
    
+        
+        <form enctype="multipart/form-data method="POST"> {% csrf_token %}
    
-         <form action="/App/formulario_auto/" method="POST"> {% csrf_token %}
+        <table>
+        
+        {{form.as_table}}
    
-         <table>
-          
-          {{form.as_table}}
-   
-         </table>
+        </table>
    
      
        
-          <input type="submit"  value="Cargar">
+        <input type="submit"  value="Cargar">
    
-         </form>
+        </form>
        
-         <div align = "right">
+        <div align = "right">
    
-            <a href="{% url 'perfil' %}">
-            <button>Volver</button>
-             </a>
+          <a href="{% url 'perfil' %}">
+          <button>Volver</button>
+            </a>
    
-           </div>
+          </div>
    
 
 

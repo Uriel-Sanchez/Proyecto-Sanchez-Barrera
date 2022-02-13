@@ -1,3 +1,4 @@
+from django.db import models
 class Propietario(models.Model):
 
     nombre=models.CharField(max_length=50)

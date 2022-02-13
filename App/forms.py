@@ -1,5 +1,6 @@
 from cProfile import label
 from dataclasses import fields
+from distutils.command.upload import upload
 from socket import fromshare
 from tkinter.tix import Form
 from django import forms
@@ -49,5 +50,6 @@ class Formulario_mensaje(forms.Form):
 
     destinatario = forms.CharField(label= 'Username')
     mensaje=forms.CharField(max_length=1000, label='Mensaje')
+    
     
     
