@@ -162,24 +162,29 @@ def login_request(request):
             user= authenticate(username=usuario, password=contra)
 
             if(user is not None):
-
+        
                 login(request, user)
                 
-                return render(request,"App/inicio.html", {'mensaje': f'Bienvenido {usuario}'})
-
+                #return render(request,"App/inicio.html", {'mensaje': f'Bienvenido {usuario}'})
+                return redirect(perfil)
             else:
 
-                return render(request,"App/inicio.html", {'mensaje': f'Fallo la autenticacion, intentalo de nuevo'})
+                return redirect(login_request)
+
+                #return render(request,"App/login.html", {'mensaje': f'Fallo la autenticacion, intentalo de nuevo'})
 
         else:
 
-            return render(request,"App/inicio.html", {'mensaje': f'Formulario Erroneo, intentelo de nuevo'})
+            print(f'Formulario Erroneo, intentelo de nuevo')
+ 
+            #return render(request,"App/login.html", {'mensaje': f'Formulario Erroneo, intentelo de nuevo'})
+            return redirect(login_request)
 
 
     else:
         form= AuthenticationForm()
 
-        return render(request, "App/login.html", {'form': form})
+    return render(request, "App/login.html", {'form': form})
 
 
 def registrar(request):
