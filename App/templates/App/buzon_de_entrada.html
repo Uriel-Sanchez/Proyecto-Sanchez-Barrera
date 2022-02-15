@@ -13,16 +13,20 @@
       <svg class="bi me-2" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
       <span class="fs-5 fw-semibold">Lista de Mensajes</span>
     </a>
+
     
     {% for mensaje in mensajes %}
 
-    <div class="list-group list-group-flush border-bottom scrollarea">
-        <a href="{% url 'formulario_mensaje' %}" class="list-group-item list-group-item-action active py-3 lh-tight" aria-current="true">
-          <div class="d-flex w-100 align-items-center justify-content-between">
-            <strong class="mb-1">{{mensaje.user}}</strong>
-            <small>Responder</small>
-          </div>
-          <div class="col-10 mb-1 small">{{mensaje.mensaje}}</div>
+    <a href="{% url 'formulario_mensaje' %}" class="list-group-item list-group-item-action py-3 lh-tight">
+      <div class="d-flex w-100 align-items-center justify-content-between">
+        <strong class="mb-1"> De {{mensaje.user}}</strong>
+        <small class="text-muted">Responder</small>
+      </div>
+      <div class="col-10 mb-1 small">{{mensaje.mensaje}}</div>
+    </a>
+
+  
+
 
     {% endfor %}
 

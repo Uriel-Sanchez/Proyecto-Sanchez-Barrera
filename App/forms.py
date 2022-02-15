@@ -1,6 +1,7 @@
 from cProfile import label
 from dataclasses import fields
 from distutils.command.upload import upload
+from email.policy import default
 from socket import fromshare
 from tkinter.tix import Form
 from django import forms
@@ -40,6 +41,7 @@ class UserEditForm(UserCreationForm):
     password1 = forms.CharField(label='Contraseña', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Repetir la contraseña', widget=forms.PasswordInput)
     
+    
 
 class Meta:
     model = User
@@ -50,6 +52,11 @@ class Formulario_mensaje(forms.Form):
 
     destinatario = forms.CharField(label= 'Username')
     mensaje=forms.CharField(max_length=1000, label='Mensaje')
+
+
+class Foto_Perfil(forms.Form):
+
+    imagen=forms.ImageField()
     
     
     

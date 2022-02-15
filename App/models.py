@@ -46,8 +46,14 @@ class Mensajeria(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     destinatario = models.CharField(max_length=50)
     mensaje=models.CharField(max_length=1000)
+    
 
     def __str__(self):
         return f'Mensaje de {self.user} a {self.destinatario}'
 
-   
+
+class Foto_PerfilM(models.Model):
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    imagen=models.ImageField(upload_to= "perfil",  null=True)
+    

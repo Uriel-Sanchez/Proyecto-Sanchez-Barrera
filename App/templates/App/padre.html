@@ -33,9 +33,27 @@
                         {% if request.user.is_authenticated  %}
 
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'logout' %}">Cerrar Sesion</a></li>
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'perfil' %}">Hola, {{user.username}} !!!</a></li>
+                        <div class="dropdown">
+                            <a href="#" class="nav-link active" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                              
+                              <strong>Hola, {{user.username}} !!!</strong>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                              <li><a class="dropdown-item" href="{% url 'perfil' %}">Perfil</a></li>
+                              <li><a class="dropdown-item" href="{% url 'editarPerfil' %}">Editar Perfil</a></li>
+                              <li><hr class="dropdown-divider"></li>
+                              <li><a class="dropdown-item" href="{% url 'formulario_auto' %}">Publicar Auto</a></li>
+                              <li><a class="dropdown-item" href="{% url 'formulario_moto' %}">Publicar Moto</a></li>
+                              <li><hr class="dropdown-divider"></li>
+                              <li><a class="dropdown-item" href="{% url 'buzon_de_entrada' %}">Buzon de Entrada</a></li>
+                              <li><a class="dropdown-item" href="{% url 'formulario_mensaje' %}">Enviar Mensaje</a></li>
+                              <li><a class="dropdown-item" href="{% url 'mensajes_enviados' %}">Mensajes Enviados</a></li>
+                              
+                              
+                            </ul>
+                          </div>
                         {% endif %}
-                            
+                        
 
                     </ul>
                 </div>

@@ -4,87 +4,99 @@
 
 {% block contenidoQueCambia %}
 
-<h1>{{usuario.first_name}} {{usuario.last_name}}</h1>
+<h1>Bienvenido a mi Perfil </h1>
+<hr class="divider">
+<div class="row">
+  <div class="col-lg-4">
+    
 
-<h3>NO DEBERIA BAJAR LA BARRA DE MENU</h3>
+    <h2>{{usuario.first_name}} {{usuario.last_name}}</h2>
+    <h5>Contacto</h5>
+    <h6>Mail: {{usuario.email}}</h6>
+    <h6>Mensajeria de Expo Motor: {{usuario}}</h6>
 
-<h4>dfghhdfg</h4>
+    
+  </div><!-- /.col-lg-4 -->
+  
 
+  
+ <hr class="divider">
+<h3>
+  Mis Publicaciones
+</h3>
 
-
-<div align="right">
-   <div align="left" class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;"> 
-  <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-    <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-    <img src="" alt="" width="32" height="32" class="rounded-circle me-2"> <span class="fs-4">{{usuario}}</span>
-  </a>
-  <hr>
-  <ul class="nav nav-pills flex-column mb-auto">
-    <li class="nav-item">
-      <a href="{% url 'perfil' %}" class="nav-link active" aria-current="page">
-        <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"/></svg>
-        Home
-      </a>
-    </li>
-    <li>
-      <a href="{% url 'formulario_auto' %}" class="nav-link text-white">
-        <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
-        Publicar Auto
-      </a>
-    </li>
-    <li>
-      <a href="{% url 'formulario_moto' %}" class="nav-link text-white">
-        <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
-        Publicar Moto
-      </a>
-    </li>
-    <li>
-      <a href="{% url 'editarPerfil' %}" class="nav-link text-white">
-        <svg class="bi me-2" width="16" height="16"><use xlink:href="{% url 'editarPerfil' %}"/></svg>
-        Editar Perfil
-      </a>
-    </li>
-    <li>
-      <a href="{% url 'buzon_de_entrada' %}" class="nav-link text-white">
-        <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
-        Buzon de Entrada
-      </a>
-    </li>
-    <li>
-      <a href="{% url 'formulario_mensaje' %}" class="nav-link text-white">
-        <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
-        Enviar Mensaje
-      </a>
-    </li>
-    <li>
-      <a href="{% url 'mensajes_enviados' %}" class="nav-link text-white">
-        <svg class="bi me-2" width="16" height="16"><use xlink:href="{% url 'editarPerfil' %}"/></svg>
-        Mensajes Enviados
-      </a>
-    </li>
-  </ul>
-  <hr>
-  <div class="dropdown">
-    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-      <img src="" alt="" width="32" height="32" class="rounded-circle me-2">
-      <strong>mdo</strong>
+ <ul>
+  {% for auto in publicacionesA %}
+  <table>
+    <tbody>
+    <tr>
+    <td></td>
+    <td>               </td>
+    <td></td>
+    </tr>
+    <tr>
+    <td><img src="{{auto.imagen.url}}"  width="250 px" height="200 px"></td>
+    <td>
+    DUEÑO: {{auto.user}}<br>
+    MARCA: {{auto.marca}}<br>
+    MODELO: {{auto.modelo}}<br>
+    COLOR: {{auto.color}}<br>
+    KM: {{auto.km}}<br>
+    <a href="{% url 'formulario_mensaje' %}">
+      <button>Contactar</button>
     </a>
-    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-      <li><a class="dropdown-item" href="#">New project...</a></li>
-      <li><a class="dropdown-item" href="#">Settings</a></li>
-      <li><a class="dropdown-item" href="#">Profile</a></li>
-      <li><hr class="dropdown-divider"></li>
-      <li><a class="dropdown-item" href="#">Sign out</a></li>
-    </ul>
-  </div>
+    <a href="{% url 'eliminar_auto' auto.id %}">
+      <button>Eliminar</button>
+    </a>
+    <a href="{% url 'editar_auto' auto.id %}">
+      <button>Editar</button>
+    </a>
+    </td>
+    </tr>
+    </tbody>
+  </table>
+  
+  {% endfor %}
+  {% for moto in publicacionesM %}
+  <table>
+    <tbody>
+    <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    </tr>
+    <tr>
+    <td><img src="{{moto.imagen.url}}"  width="250 px" height="200 px"></td>
+    <td>
+       DUEÑO: {{moto.user}}<br>
+       MARCA: {{moto.marca}}<br>
+       MODELO: {{moto.modelo}}<br>
+       COLOR: {{moto.color}}<br>
+       KM: {{moto.km}}<br>
+       <a href="{% url 'formulario_mensaje' %}">
+           <button>Contactar</button>
+        </a>
+        <a href="{% url 'eliminar_moto' moto.id %}">
+          <button>Eliminar</button>
+        </a>
+        <a href="{% url 'editar_moto' moto.id %}">
+          <button>Editar</button>
+        </a>
+
+        
+    </td>
+    </tr>
+    </tbody>
+    </table>
+  
+  {% endfor %}
+
+  
+ </ul>
+
+  
 
 
-</div>
-
-
-
-
-<h6>ACA VA A IR ALGO PARA SEPARAR EL PIE DE PAGINA CON LA BARRA</h6>
     
 
 

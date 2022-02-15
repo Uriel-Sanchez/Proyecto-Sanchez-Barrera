@@ -32,7 +32,15 @@ urlpatterns = [
     path('buzon_de_entrada/',views.buzon_de_entrada,name="buzon_de_entrada"),
     path('mensajes_enviados/',views.mensajes_enviados,name="mensajes_enviados"),
 
-    #path('respuesta/',views.respuesta,name="respuesta"),
+    path('foto_perfil/',views.foto_perfil,name="foto_perfil"),
+
+    path('eliminar_moto/<id_moto>/',views.eliminar_moto,name="eliminar_moto"),
+    path('eliminar_auto/<id_auto>/',views.eliminar_auto,name="eliminar_auto"),
+
+    path('editar_moto/<id_moto>/',views.editar_moto,name="editar_moto"),
+    path('editar_auto/<id_auto>/',views.editar_auto,name="editar_auto"),
+
+    
 
 
     

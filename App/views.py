@@ -1,11 +1,12 @@
 from http.client import HTTPResponse
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
-from App.models import Autos, Motos, Propietario, Mensajeria
-from App.forms import Formulario_auto, Formulario_moto,Formulario_propietario, UserEditForm, Formulario_mensaje
+from App.models import Autos, Motos, Propietario, Mensajeria, Foto_PerfilM
+from App.forms import Formulario_auto, Formulario_moto,Formulario_propietario, UserEditForm, Formulario_mensaje,Foto_Perfil
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
+
 
 
 
@@ -240,6 +241,7 @@ def editarPerfil(request):
             usuario.first_name = informacion['first_name']
             usuario.last_name = informacion['last_name']
             
+            
             usuario.save()
 
             return render(request, "App/inicio.html")
@@ -255,7 +257,13 @@ def perfil(request):
 
     usuario = request.user
 
-    return render(request, "App/perfil.html", {"usuario": usuario, "nombre": usuario.first_name, "apellido": usuario.last_name})
+    publicacionesA = Autos.objects.filter(user=request.user)
+
+    publicacionesM = Motos.objects.filter(user=request.user)
+
+    fotoP = Foto_PerfilM.objects.filter(user=request.user)
+
+    return render(request, "App/perfil.html", {"usuario": usuario, "nombre": usuario.first_name, "apellido": usuario.last_name, "publicacionesA": publicacionesA, "publicacionesM": publicacionesM, "fotoP":fotoP})
 
 
 @login_required
@@ -299,28 +307,114 @@ def mensajes_enviados(request):
 
 
 
-#@login_required
-#def respuesta(request): ## ver como hacer para q el nombre salga directamente en la respuesta
-
-    usuario = request.user
+@login_required
+def foto_perfil(request):
 
     if(request.method == 'POST'):
 
-        formulario_mensaje1 = Formulario_mensaje(request.POST)
+        foto_perfil1 = Foto_Perfil(request.POST, request.FILES)
 
-        if(formulario_mensaje1.is_valid()):
+        if(foto_perfil1.is_valid()):
 
-            informacion= formulario_mensaje1.cleaned_data
+            informacion= foto_perfil1.cleaned_data
 
-            mensaje = Mensajeria(user=request.user, destinatario=informacion["destinatario"], mensaje=informacion["mensaje"])
+            foto = Foto_PerfilM(user=request.user, imagen= informacion["imagen"])
+            
+            foto.save()
 
-            mensaje.save()
-
-            return render(request, "App/inicio.html", {'mensaje': f'Mensaje enviado a {mensaje.destinatario} correctamente'})
+            return render(request, "App/inicio.html")
 
     else:
 
-        formulario_mensaje1= Formulario_mensaje(initial={'user': mensaje.destinatario})
+        foto_perfil1= Foto_Perfil()
 
-    return render(request, "App/respuesta.html", {'form': formulario_mensaje1})
+    return render(request, "App/foto_perfil.html", {'form': foto_perfil1})
     
+
+@login_required
+def eliminar_moto(request, id_moto):
+
+    moto= Motos.objects.get(id=id_moto)
+
+    moto.delete()
+
+    motos= Motos.objects.all()
+    
+    return redirect(perfil)
+
+    
+@login_required
+def eliminar_auto(request, id_auto):
+
+    auto= Autos.objects.get(id=id_auto)
+
+    auto.delete()
+
+    autos= Autos.objects.all()
+    
+    return redirect(perfil)
+
+
+
+@login_required
+def editar_moto(request, id_moto):
+
+    usuario = request.user
+
+    moto= Motos.objects.get(id=id_moto)
+
+    if(request.method == 'POST'):
+
+        miFormulario = Formulario_moto(request.POST, request.FILES)
+
+        if(miFormulario.is_valid()):
+
+            informacion= miFormulario.cleaned_data
+
+            moto.marca = informacion['marca']
+            moto.modelo = informacion['modelo']
+            moto.color = informacion['color']
+            moto.km = informacion['km']
+            moto.imagen = informacion['imagen']  
+            
+            moto.save()
+
+            return redirect(perfil)
+
+    else:
+
+        miFormulario= Formulario_moto(initial={'marca': moto.marca, 'modelo':moto.modelo, 'color':moto.color, 'km':moto.km, 'imagen':moto.imagen})
+
+    return render(request, "App/editar_moto.html", {'miFormulario': miFormulario, "id_moto": id_moto})
+           
+
+@login_required
+def editar_auto(request, id_auto):
+
+    usuario = request.user
+
+    auto= Autos.objects.get(id=id_auto)
+
+    if(request.method == 'POST'):
+
+        miFormulario = Formulario_auto(request.POST, request.FILES)
+
+        if(miFormulario.is_valid()):
+
+            informacion= miFormulario.cleaned_data
+
+            auto.marca = informacion['marca']
+            auto.modelo = informacion['modelo']
+            auto.color = informacion['color']
+            auto.km = informacion['km']
+            auto.imagen = informacion['imagen']  
+            
+            auto.save()
+
+            return redirect(perfil)
+
+    else:
+
+        miFormulario= Formulario_moto(initial={'marca': auto.marca, 'modelo':auto.modelo, 'color':auto.color, 'km':auto.km, 'imagen':auto.imagen})
+
+    return render(request, "App/editar_auto.html", {'miFormulario': miFormulario, "id_moto": id_auto})

@@ -3,21 +3,28 @@
 {% load static %}
 
 {% block contenidoQueCambia %}
+    <div>
+        <h1>Lista de Autos Registrados</h1>
+
+        <h3>Que marca de auto estas buscando?</h3>
     
-    <h1>Lista de Autos Registrados</h1>
+        <form action="/App/buscar_auto/" method="GET"> 
+    
+    
+         <p> Ingrese la marca en mayusculas:  <input type="text" name="marca" id="marca"></p>
+    
+    
+         <input type="submit"  value="Buscar">
 
-    <h3>Que marca de auto estas buscando?</h3>
+        </form>
 
-    <form action="/App/buscar_auto/" method="GET"> 
-
-
-    <p> Ingrese la marca en mayusculas:  <input type="text" name="marca" id="marca"></p>
-
-
-    <input type="submit"  value="Buscar">
+    </div>
+    
 
     <ul>
         {% for auto in lista %}
+
+
         <table>
             <tbody>
             <tr>
@@ -33,13 +40,13 @@
             MODELO: {{auto.modelo}}<br>
             COLOR: {{auto.color}}<br>
             KM: {{auto.km}}<br>
-            <a href="{% url 'perfil' %}">
-                <button>Volver</button>
+            <a href="{% url 'formulario_mensaje' %}">
+                <button>Contactar</button>
             </a>
             </td>
             </tr>
             </tbody>
-            </table>
+        </table>
 
             
         {% endfor %}

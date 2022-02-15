@@ -11,10 +11,12 @@
    <form action="/App/buscar_moto/" method="GET"> 
 
 
-   <p> Ingrese la marca en mayusculas:  <input type="text" name="marca" id="marca"></p>
+    <p> Ingrese la marca en mayusculas:  <input type="text" name="marca" id="marca"></p>
 
 
-   <input type="submit"  value="Buscar">
+    <input type="submit"  value="Buscar">
+
+    </form>
 
    <ul>
       {% for moto in lista %}
@@ -28,13 +30,15 @@
       <tr>
       <td><img src="{{moto.imagen.url}}"  width="250 px" height="200 px"></td>
       <td>
-         DUEÑO: {{auto.user}}<br>
+         DUEÑO: {{moto.user}}<br>
          MARCA: {{moto.marca}}<br>
          MODELO: {{moto.modelo}}<br>
          COLOR: {{moto.color}}<br>
          KM: {{moto.km}}<br>
          <a href="{% url 'formulario_mensaje' %}">
              <button>Contactar</button>
+         </a>
+         
       </td>
       </tr>
       </tbody>
