@@ -22,10 +22,13 @@
         <tr>
         <td><img src="{{moto.imagen.url}}"  width="250 px" height="200 px"></td>
         <td>
+        DUEÑO: {{auto.user}}<br>
         MARCA: {{moto.marca}}<br>
         MODELO: {{moto.modelo}}<br>
         COLOR: {{moto.color}}<br>
         KM: {{moto.km}}<br>
+        <a href="{% url 'formulario_mensaje' %}">
+            <button>Contactar</button>
         </td>
         </tr>
         </tbody>

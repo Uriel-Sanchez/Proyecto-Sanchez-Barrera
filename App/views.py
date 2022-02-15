@@ -36,10 +36,10 @@ def propietarios(request):
 
     return render(request, "App/propietarios.html", {"lista": lista})
 
-def saludo(request):
+def about(request):
 
-	#return HttpResponse("saludoo")
-    return render(request, "App/saludo.html")
+	
+    return render(request, "App/about.html")
 
 
 # FORMULARIO CREADO PARA EL HTML ---- def formulario_auto(request):
@@ -60,13 +60,13 @@ def formulario_auto(request):
 
     if(request.method == 'POST'):
 
-        formulario_auto1 = Formulario_auto(request.POST)
+        formulario_auto1 = Formulario_auto(request.POST, request.FILES)
 
         if(formulario_auto1.is_valid()):
 
             informacion= formulario_auto1.cleaned_data
 
-            auto = Autos(user=request.user, marca=informacion["marca"], modelo=informacion["modelo"], color=informacion["color"], km=informacion["km"], imagen= informacion["autos"])
+            auto = Autos(user=request.user, marca=informacion["marca"], modelo=informacion["modelo"], color=informacion["color"], km=informacion["km"], imagen= informacion["imagen"])
 
             auto.save()
 
@@ -105,14 +105,14 @@ def formulario_moto(request):
 
     if(request.method == 'POST'):
 
-        formulario_moto1 = Formulario_moto(request.POST)
+        formulario_moto1 = Formulario_moto(request.POST, request.FILES)
 
         if(formulario_moto1.is_valid()):
 
             informacion= formulario_moto1.cleaned_data
 
-            moto = Motos(marca=informacion["marca"], modelo=informacion["modelo"], color=informacion["color"], km=informacion["km"], imagen= informacion["motos"])
-
+            moto = Motos(user=request.user, marca=informacion["marca"], modelo=informacion["modelo"], color=informacion["color"], km=informacion["km"], imagen= informacion["imagen"])
+            
             moto.save()
 
             return render(request, "App/inicio.html")

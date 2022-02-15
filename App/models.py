@@ -19,11 +19,12 @@ class Autos(models.Model):
         return f'{self.marca}  , {self.modelo}, {self.imagen}'
 class Motos(models.Model):
 
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     marca=models.CharField(max_length=50)
     modelo=models.CharField(max_length=50)
     color=models.CharField(max_length=50)
     km=models.IntegerField()
-    imagen=models.ImageField(upload_to= "motos", null=True)
+    imagen=models.ImageField(upload_to= "motos",  null=True)
     
     def __str__(self):
             return f'{self.marca}  ,  {self.modelo}, {self.imagen}'

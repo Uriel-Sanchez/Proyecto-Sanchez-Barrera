@@ -28,14 +28,20 @@
             <tr>
             <td><img src="{{auto.imagen.url}}"  width="250 px" height="200 px"></td>
             <td>
+            DUEÑO: {{auto.user}}<br>
             MARCA: {{auto.marca}}<br>
             MODELO: {{auto.modelo}}<br>
             COLOR: {{auto.color}}<br>
             KM: {{auto.km}}<br>
+            <a href="{% url 'perfil' %}">
+                <button>Volver</button>
+            </a>
             </td>
             </tr>
             </tbody>
             </table>
+
+            
         {% endfor %}
     </ul>
 
