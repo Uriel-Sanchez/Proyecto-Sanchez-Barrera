@@ -71,7 +71,7 @@ def formulario_auto(request):
 
             auto.save()
 
-            return render(request, "App/inicio.html")
+            return render(request, "App/perfil.html")
 
     else:
 
@@ -116,7 +116,7 @@ def formulario_moto(request):
             
             moto.save()
 
-            return render(request, "App/inicio.html")
+            return render(request, "App/perfil.html")
 
     else:
 
@@ -139,7 +139,7 @@ def formulario_propietario(request):
 
             propietario.save()
 
-            return render(request, "App/inicio.html")
+            return render(request, "App/perfil.html")
 
     else:
 
@@ -199,7 +199,7 @@ def registrar(request):
 
             form.save()
 
-            return render(request,"App/inicio.html", {'mensaje': f'Usuario creado, bienvenido {username}'})
+            return render(request,"App/perfil.html", {'mensaje': f'Usuario creado, bienvenido {username}'})
 
         else:
             return redirect(registrar) #FALTARIA PONER UN TEXTO Q AVISE Q NO SE PUDO REGISTRAR EL USUARIO 
@@ -249,7 +249,7 @@ def editarPerfil(request):
             
             usuario.save()
 
-            return render(request, "App/inicio.html")
+            return render(request, "App/perfil.html")
 
     else:
 
@@ -286,7 +286,7 @@ def formulario_mensaje(request):
 
             mensaje.save()
 
-            return render(request, "App/inicio.html", {'mensaje': f'Mensaje enviado a {mensaje.destinatario} correctamente'})
+            return render(request, "App/perfil.html", {'mensaje': f'Mensaje enviado a {mensaje.destinatario} correctamente'})
 
     else:
 
