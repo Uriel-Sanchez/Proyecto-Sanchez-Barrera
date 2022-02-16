@@ -1,12 +1,12 @@
 # Proyecto Coder - Sanchez/Barrera
 
-## Pagina Web destinada a la comercializacion de Autos y Motos
+## Pagina Web destinada a la publicacion de Autos y Motos
 
 Para ingresar haga [click][website]
 
 ### Inicio
 
-Aqui se van a encontrar las distintas publicaciones que realicen los propietarios.
+Aqui se va a encontrar una breve descripcion de la pagina. Y la opcion de registrarse para poder comenzar a utilizarla
 
 #### Autos 
 
@@ -22,13 +22,15 @@ Tambien tenemos el apartado de motos en [Listado de Motos Registradas][motos]
 
 Y para cargar su moto lo puede hacer [aqui][formM]
 
-#### Propietarios
+#### Mensajeria 
 
-Para conocer a los distintos propietarios que hay, se los puede ver en el siguiente listado de [propietarios][prop]
+La pagina cuenta con un sistema de mensajeria, mediante el cual cada usuario se podra comunicar con otro a tarvez de su Username
 
-Y para registrarte como nuevo propietario lo puede realizar haciendo [click][formP]
+Tambien cuanta con un buzon de entrada y un apartado con todos los mensajes enviados 
 
+#### Acerca de Nosotros 
 
+Por ultimo cuenta con un espacion llamadado [Acerca de Nosotros][acerca] en donde les contamos quienes somos y cual fue tanto el motivo como el objetivo de crear esta web
 
 
 
@@ -39,3 +41,4 @@ Y para registrarte como nuevo propietario lo puede realizar haciendo [click][for
 [formM]: http://127.0.0.1:8000/App/formulario_moto/
 [formP]: http://127.0.0.1:8000/App/formulario_propietario/
 [prop]: http://127.0.0.1:8000/App/propietarios/
+[acerca]: http://127.0.0.1:8000/App/about/
