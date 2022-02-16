@@ -2,6 +2,8 @@
 
 ## Pagina Web destinada a la publicacion de Autos y Motos
 
+### [link del video mostrando el uso de la web][video] 
+
 Para ingresar haga [click][website]
 
 ### Inicio
@@ -42,3 +44,4 @@ Por ultimo cuenta con un espacion llamadado [Acerca de Nosotros][acerca] en dond
 [formP]: http://127.0.0.1:8000/App/formulario_propietario/
 [prop]: http://127.0.0.1:8000/App/propietarios/
 [acerca]: http://127.0.0.1:8000/App/about/
+[video]: https://drive.google.com/drive/folders/1f405cSK1qXlas5gsd6d1VFF5nNyoMgBj?usp=sharing
